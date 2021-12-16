@@ -168,7 +168,7 @@ module Elasticsearch
       #
       def search(query_or_payload, models=[], options={})
         models = Multimodel.new(models)
-        request = Searching::SearchRequest.new(models, query_or_payload, options)
+        request = Searching::SearchRequest.new(models, query_or_payload, options.merge({ track_total_hits: true })
         Response::Response.new(models, request)
       end
 
