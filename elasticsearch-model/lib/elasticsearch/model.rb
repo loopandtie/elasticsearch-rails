@@ -62,7 +62,6 @@ when defined?(::WillPaginate)
 end
 
 module Elasticsearch
-
   # Elasticsearch integration for Ruby models
   # =========================================
   #
@@ -168,7 +167,7 @@ module Elasticsearch
       #
       def search(query_or_payload, models=[], options={})
         models = Multimodel.new(models)
-        request = Searching::SearchRequest.new(models, query_or_payload, options.merge({ track_total_hits: true }))
+        request = Searching::SearchRequest.new(models, query_or_payload, options)
         Response::Response.new(models, request)
       end
 
